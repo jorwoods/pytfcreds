@@ -1,0 +1,67 @@
+[project]
+name = "pytfcreds"
+authors = [
+    {name="Jordan Woods", email="jor.e.woods@gmail.com"}
+]
+version = "0.1.0"
+license = {text = "GNU General Public License v3"}
+
+dynamic = [
+    "readme"
+]
+description = "Manage credentials for Terraform via Python"
+
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
+
+]
+
+dependencies = [
+    "keyring==24.2.0",
+]
+requires-python = ">=3.8"
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "black",
+]
+[project.scripts]
+terraform-credentials-credstore = "pytfcreds.cli:main"
+
+[build-system]
+requires = [
+    "setuptools>=42",
+    "wheel",
+]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.dynamic]
+readme = {file = ["README.rst"]}
+
+[tool.setuptools.package-data]
+pytfcreds = [
+    "py.typed"
+]
+
+[tool.black]
+line-length = 120
+target-version = ["py38"]
+extend-exclude = """
+# A regex preceded with ^/ will apply only to files and directories
+# in the root of the project.
+(
+)
+"""
+
+# [tool.autopub]
+# git-username = jorwoods
+# git-email = jor.e.woods@gmail.com
+
+# [tool.pytest.ini_options]
+# minversion = "6.0"
+# testpaths = [
+#     "tests",
+# ]
